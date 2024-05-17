@@ -16,14 +16,12 @@ class AES:
         iv = os.urandom(16)
 
         return (key, iv)
-    
 
     def craft_cipher(self, key, iv):
         # crafting encryption algorithm with its mode 
         # backend function provides a default backend for cryptographic operations, such as encryption and decryption.
         cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend) 
-        encryptor = cipher.encryptor()
-        return encryptor
+        return cipher
     
 
     def plaintext_source(self,):        
@@ -78,7 +76,8 @@ class AES:
     def encrypt(self,):
        
         (key,  iv)= self.get_key_iv()
-        encryptor = self.craft_cipher(key, iv)
+        cipher = self.craft_cipher(key, iv)
+        encryptor = cipher.encryptor()
         # plaintext = b"Secret Messaage must be transmitted securely to the remote"
         plaintext = self.plaintext_source()
         padded_plaintext = self.padding(plaintext)
