@@ -62,6 +62,7 @@ class AES:
         padded_plaintext = plaintext + padding_values
         return padded_plaintext
 
+    
     def unpadding(self, padded_plaintext):
         # get the last element of byten value
         # for example: b'Hello\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b\x0b'
@@ -73,6 +74,7 @@ class AES:
         plaintext = padded_plaintext[0: real_length]
         return plaintext
 
+    
     def encrypt(self,):
        
         (key,  iv)= self.get_key_iv()
@@ -86,7 +88,7 @@ class AES:
         
 
     def decrypt(self, ciphertext, key, iv):
-        cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend)
+        cipher = self.craft_cipher(key, iv)
         decryptor = cipher.decryptor()
         padded_plaintext = decryptor.update(ciphertext) + decryptor.finalize()
         plaintext = self.unpadding(padded_plaintext)
