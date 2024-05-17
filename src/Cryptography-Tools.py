@@ -2,7 +2,7 @@ from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
 import os
-from Conversions import Conversions
+from conversions import Conversions
 import argparse
 
 # Symmertic Cryptography
