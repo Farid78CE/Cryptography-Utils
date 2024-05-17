@@ -1,7 +1,8 @@
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.backends import default_backend
 import os
-from conversions import Conversions
+from Conversions import Conversions
 import argparse
 
 # Symmertic Cryptography
@@ -94,7 +95,14 @@ class AES:
         print(f"plaintext: {self.conv.bytes_str(plaintext)}")      
         return plaintext
 
-
+class SHA256:
+    def __init__(self, conv):
+        self.conv = conv
+        
+    def hash():
+        argparse.ArgumentParser(description="")
+        hashes.SHA256
+        
 
 # # Assymetric Cryptography
 # class RSA:
