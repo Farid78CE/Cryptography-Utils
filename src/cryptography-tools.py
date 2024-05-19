@@ -208,6 +208,7 @@ class CommandHandler:
             secure_hash = SecureHash(conv)
             hash_type = arg.hash_type
             chunck_size = 8192 # specify the chunck size (in byte) for reading files
+            hash_value = ""
             flag = False # if flag=T it is a path to read file 
             
             if os.path.exists(arg.path_or_data_hash):
@@ -224,7 +225,10 @@ class CommandHandler:
                 print(f"Hash Value: {hash_value}")
 
             if arg.compare:
-                pass
+                if arg.compare == hash_value:
+                    print("[+] Hashes are the same")
+                else:
+                    print("[-] `hashes are not the same!")
         
         
 # # Assymetric Cryptography
